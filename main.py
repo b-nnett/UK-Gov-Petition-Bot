@@ -11,8 +11,8 @@ class petition:
 	def __init__(self):
 		self.session = requests.Session()
 
-		self.petition_id = 628164
-		self.catchall = "gmail.com"
+		self.petition_id = 643008
+		self.catchall = "iclouw.com"
 		
 		self.name = random.choice(first_names)
 		self.postcode = random.choice(postcodes)
@@ -126,7 +126,9 @@ class petition:
 			print(Fore.GREEN + f"[Success] Signed petition (Email: {self.email})")
 			
 		else:
-			print(Fore.RED + f"[Failed] Failed to sign petition (Email: {self.email})")
+			print(Fore.RED + f"[Failed] Failed to sign petition (Email: {self.email}) (Status Code: {response.status_code})")
+
+			print(response.text)
 			
 			print
 
@@ -134,5 +136,5 @@ def thread_main():
 	while(True):
 		petition()
 
-for i in range(0, 5):
+for i in range(0, 1):
 	t = threading.Thread(target=thread_main).start()
